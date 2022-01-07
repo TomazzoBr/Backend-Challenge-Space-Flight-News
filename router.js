@@ -3,11 +3,11 @@ const router = express.Router();
 const articles = require("./controllers/articles.controllers");
 
 router.get("/", articles.greeting);
-router.get("/articles", articles.getArticles);
-router.get("/articles/{id}", articles.getArticle);
-router.post("/articles/:", articles.postArticle);
-router.put("/articles/{id}", articles.modifyArticle);
-router.delete("/articles/{id}", articles.deleteArticle);
+router.get("/articles", articles.getAllArticles);
+router.get("/articles/:id", articles.getArticle);
+router.post("/articles/", articles.postArticle);
+router.put("/articles/:id", articles.modifyArticle);
+router.delete("/articles/:id", articles.deleteArticle);
 
 module.exports = router;
 
