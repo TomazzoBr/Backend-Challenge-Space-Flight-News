@@ -1,7 +1,7 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
-const QuestionSchema = new Schema({
+const ArticlesSchema = new Schema({
   id: { type: String, required: true },
   featured: { type: Boolean, required: true },
   title: { type: String, required: true },
@@ -24,4 +24,4 @@ const QuestionSchema = new Schema({
   ],
 });
 
-module.exports = mongoose.model("questions", QuestionSchema);
+export default mongoose.model("articles", ArticlesSchema);

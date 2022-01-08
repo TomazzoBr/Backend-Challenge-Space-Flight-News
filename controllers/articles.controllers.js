@@ -1,7 +1,7 @@
-const articles = require("../models/question.model");
+import articles from "../models/article.model.js";
 const url = "https://api.spaceflightnewsapi.net/v3/";
 
-const greeting = async (req, res) => {
+export const greeting = async (req, res) => {
   try {
     res
       .status(200)
@@ -13,9 +13,9 @@ const greeting = async (req, res) => {
   }
 };
 
-const getAllArticles = async (req, res) => {
+export const getAllArticles = async (req, res) => {
   try {
-    const dbArticles = await questions.find();
+    const dbArticles = await articles.find();
     res.status(200).send(dbArticles);
   } catch (error) {
     console.log(error);
@@ -23,9 +23,9 @@ const getAllArticles = async (req, res) => {
   }
 };
 
-const getArticle = async (req, res) => {
+export const getArticle = async (req, res) => {
   try {
-    const dbArticles = await questions.findOne();
+    const dbArticles = await articles.findOne();
     res.status(200).send(dbArticles);
   } catch (error) {
     console.log(error);
@@ -33,15 +33,11 @@ const getArticle = async (req, res) => {
   }
 };
 
-const postArticle = async (req, res) => {
+export const postArticle = async (req, res) => {
   try {
-    const { description, image, correct, wrong, explanation } = req.body;
+    const body = req.body;
     const article = await articles.create({
-      description,
-      image,
-      correct,
-      wrong,
-      explanation,
+      body,
     });
     res.status(201).send(article);
   } catch (error) {
@@ -50,7 +46,7 @@ const postArticle = async (req, res) => {
   }
 };
 
-const modifyArticle = async (req, res) => {
+export const modifyArticle = async (req, res) => {
   try {
     const dbArticles = await articles.update();
     res.status(200).send(dbArticles);
@@ -60,7 +56,7 @@ const modifyArticle = async (req, res) => {
   }
 };
 
-const deleteArticle = async (req, res) => {
+export const deleteArticle = async (req, res) => {
   try {
     await articles.delete();
     res.status(204);
@@ -68,13 +64,4 @@ const deleteArticle = async (req, res) => {
     console.log(error);
     res.status(500);
   }
-};
-
-module.exports = {
-  greeting,
-  getAllArticles,
-  getArticle,
-  postArticle,
-  modifyArticle,
-  deleteArticle,
 };

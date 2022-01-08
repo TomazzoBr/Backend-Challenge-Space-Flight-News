@@ -1,15 +1,22 @@
-const express = require("express");
-const router = express.Router();
-const articles = require("./controllers/articles.controllers");
+import { Router } from "express";
+const router = Router();
+import {
+  greeting,
+  getAllArticles,
+  getArticle,
+  postArticle,
+  modifyArticle,
+  deleteArticle,
+} from "./controllers/articles.controllers.js";
 
-router.get("/", articles.greeting);
-router.get("/articles", articles.getAllArticles);
-router.get("/articles/:id", articles.getArticle);
-router.post("/articles/", articles.postArticle);
-router.put("/articles/:id", articles.modifyArticle);
-router.delete("/articles/:id", articles.deleteArticle);
+router.get("/", greeting);
+router.get("/articles", getAllArticles);
+router.get("/articles/:id", getArticle);
+router.post("/articles/", postArticle);
+router.put("/articles/:id", modifyArticle);
+router.delete("/articles/:id", deleteArticle);
 
-module.exports = router;
+export default router;
 
 // [GET]/:  Retornar um Status: 200 e uma Mensagem "Back-end Challenge 2021 🏅 - Space Flight News"
 

@@ -1,4 +1,7 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
+import { config } from "dotenv";
+
+config();
 const uri = process.env.MONGO_URL;
 
 mongoose.connect(uri, {
@@ -9,10 +12,10 @@ mongoose.connect(uri, {
 const db = mongoose.connection;
 
 db.on("error", function () {
-  console.error(">>>> db connection error");
+  console.error("db connection error");
 });
 db.once("open", function () {
-  console.log(">>>> we are connected to the database!");
+  console.log("Connected to the database!");
 });
 
-module.exports = db;
+export default db;
