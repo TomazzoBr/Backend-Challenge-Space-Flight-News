@@ -15,7 +15,7 @@ export const greeting = async (req, res) => {
 
 export const getAllArticles = async (req, res) => {
   try {
-    const dbArticles = await articles.find();
+    const dbArticles = await url.find();
     res.status(200).send(dbArticles);
   } catch (error) {
     console.log(error);
