@@ -27,7 +27,8 @@ export const getAllArticles = async (req, res) => {
 
 export const getArticle = async (req, res) => {
   try {
-    const dbArticles = await fetch(`${url}articles/${req.id}`);
+    console.log(req);
+    const dbArticles = await fetch(`${url}articles/${req.params.id}`);
     const response = await dbArticles.json();
     res.status(200).send(response);
   } catch (error) {
