@@ -1,4 +1,5 @@
 import articles from "../models/article.model.js";
+import fetch from "node-fetch";
 const url = "https://api.spaceflightnewsapi.net/v3/";
 
 export const greeting = async (req, res) => {
@@ -15,8 +16,9 @@ export const greeting = async (req, res) => {
 
 export const getAllArticles = async (req, res) => {
   try {
-    const dbArticles = await url.find();
-    res.status(200).send(dbArticles);
+    const dbArticles = await fetch(`${url}articles`);
+    const response = await dbArticles.json();
+    res.status(200).send(response);
   } catch (error) {
     console.log(error);
     res.status(500);
@@ -25,8 +27,9 @@ export const getAllArticles = async (req, res) => {
 
 export const getArticle = async (req, res) => {
   try {
-    const dbArticles = await articles.findOne();
-    res.status(200).send(dbArticles);
+    const dbArticles = await fetch(`${url}articles/${req.id}`);
+    const response = await dbArticles.json();
+    res.status(200).send(response);
   } catch (error) {
     console.log(error);
     res.status(500);
