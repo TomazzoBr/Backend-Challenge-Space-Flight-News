@@ -5,7 +5,13 @@ This is a project developed for Coodesh. It's a backend project that makes API c
 
 ### Tech-Stack
 
-### Instructions
+ExpressJS
+
+MongoDB
+
+Mongoose
+
+### Instructions to start the app
 
 
 This is a challenge by Coodesh
