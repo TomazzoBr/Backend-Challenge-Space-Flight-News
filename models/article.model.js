@@ -10,6 +10,7 @@ const ArticlesSchema = new Schema({
   newsSite: { type: String, required: true },
   summary: { type: String, required: true },
   publishedAt: { type: String, required: true },
+  updatedAt: { type: String, required: true },
   launches: [
     {
       id: String,
