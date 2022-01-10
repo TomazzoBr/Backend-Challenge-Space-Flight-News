@@ -39,9 +39,31 @@ export const getArticle = async (req, res) => {
 
 export const postArticle = async (req, res) => {
   try {
-    const body = req.body;
+    const {
+      id,
+      title,
+      url,
+      imageUrl,
+      newsSite,
+      summary,
+      publishedAt,
+      updatedAt,
+      featured,
+      launches,
+      events,
+    } = req.body;
     const article = await articles.create({
-      body,
+      id,
+      title,
+      url,
+      imageUrl,
+      newsSite,
+      summary,
+      publishedAt,
+      updatedAt,
+      featured,
+      launches,
+      events,
     });
     res.status(201).send(article);
   } catch (error) {
@@ -52,8 +74,8 @@ export const postArticle = async (req, res) => {
 
 export const modifyArticle = async (req, res) => {
   try {
-    const dbArticles = await articles.update();
-    res.status(200).send(dbArticles);
+    const articleToUpdate = await articles.updateOne(req.params.id);
+    res.status(200).send(articleToUpdate);
   } catch (error) {
     console.log(error);
     res.status(500);

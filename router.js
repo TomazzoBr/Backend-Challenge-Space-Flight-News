@@ -12,7 +12,7 @@ import {
 router.get("/", greeting);
 router.get("/articles", getAllArticles);
 router.get("/articles/:id", getArticle);
-router.post("/articles/", postArticle);
+router.post("/articles", postArticle);
 router.put("/articles/:id", modifyArticle);
 router.delete("/articles/:id", deleteArticle);
 
