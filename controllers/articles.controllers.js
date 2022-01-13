@@ -18,6 +18,7 @@ export const getAllArticles = async (req, res) => {
   try {
     const dbArticles = await fetch(`${url}articles`);
     const response = await dbArticles.json();
+    await articles.create(response);
     res.status(200).send(response);
   } catch (error) {
     console.log(error);
