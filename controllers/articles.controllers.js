@@ -27,10 +27,10 @@ export const getAllArticles = async (req, res) => {
 
 export const getArticle = async (req, res) => {
   try {
-    console.log(req);
-    const dbArticles = await fetch(`${url}articles/${req.params.id}`);
-    const response = await dbArticles.json();
-    res.status(200).send(response);
+    const dbArticles = await articles.find({ id: req.params.id });
+    // const response = await dbArticles.json();
+    console.log(dbArticles);
+    res.status(200).send(dbArticles);
   } catch (error) {
     console.log(error);
     res.status(500);
@@ -74,7 +74,12 @@ export const postArticle = async (req, res) => {
 
 export const modifyArticle = async (req, res) => {
   try {
-    const articleToUpdate = await articles.updateOne(req.params.id);
+    const { id } = req.params;
+    const { ...data } = req.body;
+    const articleToUpdate = await articles.updateMany({
+      where: id,
+      data: data,
+    });
     res.status(200).send(articleToUpdate);
   } catch (error) {
     console.log(error);
