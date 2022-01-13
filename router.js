@@ -8,6 +8,12 @@ import {
   modifyArticle,
   deleteArticle,
 } from "./controllers/articles.controllers.js";
+import CronJob from "cron";
+
+const job = new CronJob("* 9 * * * *", function () {
+  router.get("/articles", getAllArticles);
+});
+job.start();
 
 router.get("/", greeting);
 router.get("/articles", getAllArticles);
