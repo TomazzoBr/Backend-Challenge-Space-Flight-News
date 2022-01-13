@@ -89,8 +89,9 @@ export const modifyArticle = async (req, res) => {
 
 export const deleteArticle = async (req, res) => {
   try {
-    await articles.delete();
-    res.status(204);
+    const { id } = req.params;
+    await articles.deleteOne({ id: id });
+    res.status(204).send("Object deleted!");
   } catch (error) {
     console.log(error);
     res.status(500);
