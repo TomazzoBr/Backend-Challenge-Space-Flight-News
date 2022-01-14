@@ -17,7 +17,10 @@ Node-cron
 
 # Installation 
 
-    npm install
+1) Clone this repository.
+2) Fill your .env file with your credentials following the .env.example provided.
+3) run `npm install`.
+4) run `npm start` to start the server.
 
 
 This is a challenge by Coodesh
