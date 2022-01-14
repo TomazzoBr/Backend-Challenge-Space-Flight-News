@@ -29,8 +29,6 @@ export const getAllArticles = async (req, res) => {
 export const getArticle = async (req, res) => {
   try {
     const dbArticles = await articles.find({ id: req.params.id });
-    // const response = await dbArticles.json();
-    console.log(dbArticles);
     res.status(200).send(dbArticles);
   } catch (error) {
     console.log(error);
