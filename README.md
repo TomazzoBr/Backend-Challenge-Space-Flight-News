@@ -11,7 +11,9 @@ MongoDB
 
 Mongoose
 
-### Instructions to start the app
+# Installation 
+
+    npm install
 
 
 This is a challenge by Coodesh
